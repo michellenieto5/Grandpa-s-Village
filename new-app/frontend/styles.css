@@ -1,0 +1,740 @@
+/**
+ * Grandpa's Village — styles.css
+ * Palette: forest green + warm brown + cream
+ */
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Tokens ── */
+:root {
+  --green-dark:    #1e3d2f;
+  --green-mid:     #2d6a4f;
+  --green-light:   #52b788;
+  --green-pale:    #d8f3dc;
+  --brown-dark:    #2a1a08;
+  --brown-mid:     #6b4a26;
+  --brown-light:   #c4a882;
+  --cream:         #fffaf1;
+  --cream-dark:    #f5ead8;
+  --border:        #ddd3be;
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'DM Sans', Arial, sans-serif;
+}
+
+/* ── Base ── */
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--brown-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Header ── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 6%;
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+nav a {
+  margin-left: 28px;
+  text-decoration: none;
+  color: var(--brown-mid);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: var(--green-mid);
+}
+
+/* ── Photo strip ── */
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 300px;
+}
+
+.photo-slot {
+  position: relative;
+  overflow: hidden;
+  background: var(--green-dark);
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.65) saturate(0.9);
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.photo-slot:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.55) saturate(1.1);
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px 14px;
+}
+
+.photo-word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* ── Quote band ── */
+.quote-band {
+  background: var(--green-dark);
+  padding: 24px 6%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 80px;
+  line-height: 0.6;
+  color: var(--green-light);
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+.quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+.quote-sub {
+  font-size: 12px;
+  color: var(--brown-light);
+  margin-top: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 72px 6% 64px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1.05;
+  color: var(--brown-dark);
+  margin-bottom: 24px;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--green-mid);
+}
+
+.hero-left p {
+  font-size: 15px;
+  color: var(--brown-mid);
+  line-height: 1.8;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 13px 24px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--green-dark);
+  color: var(--cream);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--green-dark);
+  border: 1px solid var(--green-mid);
+}
+
+/* ── Hero right: numbered features ── */
+.hero-right {
+  padding-top: 8px;
+}
+
+.what-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.feature-item:last-child {
+  border-bottom: none;
+}
+
+.feature-num {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--green-pale);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+}
+
+.feature-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brown-dark);
+  margin-bottom: 4px;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: var(--brown-mid);
+  line-height: 1.55;
+}
+
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  background: var(--green-pale);
+  color: var(--green-dark);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* ── Form sections ── */
+.form-section {
+  padding: 72px 6%;
+  background: var(--cream-dark);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.form-copy h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--brown-dark);
+  margin-bottom: 14px;
+}
+
+.form-copy p {
+  font-size: 14px;
+  color: var(--brown-mid);
+  line-height: 1.7;
+}
+
+form {
+  background: white;
+  border-radius: 18px;
+  padding: 32px;
+  border: 0.5px solid var(--border);
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brown-dark);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--brown-dark);
+  background: var(--cream);
+  transition: border-color 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--green-mid);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Messages ── */
+.message {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: none;
+}
+
+.success {
+  display: block;
+  background: var(--green-pale);
+  color: var(--green-dark);
+  border: 0.5px solid var(--green-light);
+}
+
+.error {
+  display: block;
+  background: #fdeaea;
+  color: #9b2c2c;
+  border: 0.5px solid #f5c6c6;
+}
+
+/* ── Directory ── */
+#directory {
+  padding: 72px 6%;
+}
+
+.directory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.directory-header h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--brown-dark);
+  margin-top: 8px;
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.business-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  border: 0.5px solid var(--border);
+  transition: transform 0.2s;
+}
+
+.business-card:hover {
+  transform: translateY(-2px);
+}
+
+.business-card h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--brown-dark);
+  margin-bottom: 8px;
+}
+
+.business-card p {
+  font-size: 13px;
+  color: var(--brown-mid);
+  line-height: 1.55;
+}
+
+.business-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.delete-btn {
+  background: transparent;
+  border: 0.5px solid var(--border);
+  color: var(--brown-light);
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  font-size: 11px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: #fdeaea;
+  color: #9b2c2c;
+  border-color: #f5c6c6;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.business-tag {
+  display: inline-block;
+  background: var(--green-pale);
+  color: var(--green-dark);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.business-id {
+  font-size: 11px;
+  color: var(--brown-light);
+}
+
+/* ── Footer ── */
+footer {
+  padding: 36px 6%;
+  text-align: center;
+  background: var(--green-dark);
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+footer p {
+  font-size: 13px;
+  color: var(--brown-light);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .photo-strip {
+    grid-template-columns: repeat(3, 1fr);
+    height: 360px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .form-grid,
+  .how-grid,
+  .business-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .directory-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .photo-strip {
+    grid-template-columns: repeat(2, 1fr);
+    height: 280px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+}
+
+/* ── Clickable business cards ── */
+.clickable-card {
+  cursor: pointer;
+}
+
+.clickable-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--green-mid);
+}
+
+.card-cta {
+  color: var(--green-mid) !important;
+  font-weight: 500;
+}
+
+.directory-hint {
+  font-size: 13px;
+  color: var(--brown-mid);
+  margin-top: 6px;
+}
+
+/* ── Edit button on cards ── */
+.edit-btn {
+  background: transparent;
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.edit-btn:hover {
+  background: var(--green-pale);
+  border-color: var(--green-light);
+}
+
+/* ── Modal ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 61, 47, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--cream);
+  border-radius: 18px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  border: 0.5px solid var(--border);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--brown-dark);
+}
+
+.modal-close {
+  background: transparent;
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brown-mid);
+}
+
+.modal-close:hover {
+  background: #fdeaea;
+  color: #9b2c2c;
+  border-color: #f5c6c6;
+}
+
+/* ── Business detail page ── */
+.business-detail-card {
+  background: white;
+  border-radius: 18px;
+  padding: 32px;
+  border: 0.5px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.biz-detail-name {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--brown-dark);
+  margin: 10px 0 8px;
+}
+
+.biz-detail-address {
+  font-size: 15px;
+  color: var(--brown-mid);
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--brown-dark);
+  margin-bottom: 20px;
+}
+
+.review-form-section {
+  margin-bottom: 48px;
+}
+
+.review-form-inline {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  border: 0.5px solid var(--border);
+}
+
+/* ── Review cards ── */
+.review-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px 24px;
+  border: 0.5px solid var(--border);
+  margin-bottom: 14px;
+  transition: transform 0.2s;
+}
+
+.review-card:hover {
+  transform: translateY(-1px);
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-stars {
+  font-size: 16px;
+}
+
+.review-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.review-text {
+  font-size: 14px;
+  color: var(--brown-dark);
+  line-height: 1.65;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.review-text.no-text {
+  color: var(--brown-light);
+  font-style: normal;
+}
+
+.review-meta {
+  font-size: 11px;
+  color: var(--brown-light);
+}
+
+/* ── Stars on business cards ── */
+.card-stars {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brown-dark);
+}
+
+.card-stars.no-reviews {
+  font-size: 12px;
+  color: var(--brown-light);
+  font-style: italic;
+  font-weight: 400;
+}

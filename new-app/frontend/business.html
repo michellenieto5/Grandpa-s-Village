@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business — Grandpa's Village</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">Grandpa's Village</div>
+    <nav>
+      <a href="/">← Back to Village</a>
+    </nav>
+  </header>
+
+  <main style="padding: 48px 6%;">
+
+    <!-- Business Info -->
+    <div id="businessInfo" class="business-detail-card">
+      <p style="color: var(--brown-mid);">Loading...</p>
+    </div>
+
+    <!-- Leave a Review -->
+    <section class="review-form-section">
+      <h2 class="section-heading">Leave a review</h2>
+      <form id="reviewForm" class="review-form-inline">
+        <input type="hidden" id="business_id" />
+        <div class="form-row">
+          <div class="input-group">
+            <label>Your User ID</label>
+            <input type="number" id="user_id" placeholder="e.g. 42" required />
+          </div>
+          <div class="input-group">
+            <label>Stars</label>
+            <select id="stars">
+              <option value="5">⭐⭐⭐⭐⭐ — 5 stars</option>
+              <option value="4">⭐⭐⭐⭐ — 4 stars</option>
+              <option value="3">⭐⭐⭐ — 3 stars</option>
+              <option value="2">⭐⭐ — 2 stars</option>
+              <option value="1">⭐ — 1 star</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Your review</label>
+          <textarea id="review_text" rows="3" placeholder="Tell the village about your experience..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+        <div id="reviewMessage" class="message"></div>
+      </form>
+    </section>
+
+    <!-- Reviews List -->
+    <section>
+      <h2 class="section-heading">What the village is saying</h2>
+      <div id="reviewsList"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">Grandpa's Village</div>
+    <p>Powered by Flask, Google Cloud, JavaScript, and community.</p>
+  </footer>
+
+  <!-- Edit Review Modal -->
+  <div id="editReviewModal" class="modal-backdrop" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Edit Review</h3>
+        <button id="closeEditReviewModal" class="modal-close">✕</button>
+      </div>
+      <form id="editReviewForm">
+        <input type="hidden" id="edit_review_id" />
+        <div class="input-group">
+          <label>Stars</label>
+          <select id="edit_stars">
+            <option value="5">⭐⭐⭐⭐⭐ — 5 stars</option>
+            <option value="4">⭐⭐⭐⭐ — 4 stars</option>
+            <option value="3">⭐⭐⭐ — 3 stars</option>
+            <option value="2">⭐⭐ — 2 stars</option>
+            <option value="1">⭐ — 1 star</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Review</label>
+          <textarea id="edit_review_text" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Changes</button>
+        <div id="editReviewMessage" class="message"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/business.js"></script>
+</body>
+</html>

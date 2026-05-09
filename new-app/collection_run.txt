@@ -1,0 +1,1078 @@
+newman
+
+assignment2
+
+❏ 1. Create a Business (6 pts)
+↳ 1. add business 201 (2 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 366ms time ★ 463B↑ 399B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 151B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's",
+  │   "street_address": "4900 N Lamar Blvd",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 142B
+  │ {"city":"Austin","id":6232102555090944,"name":"Mandola
+  │ 's","owner_id":6789,"state":"TX","street_address":"490
+  │ 0 N Lamar Blvd","zip_code":78751}
+  └
+  prepare   wait   dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  3ms       18ms   1ms          9ms             105ms           222ms            8ms        506µs     369ms 
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a business Test 1 points = 2'
+  │ '******* Create a business Tests current points = 2'
+  └
+
+↳ 2. add business with missing attributes 400 (2 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  400 Bad Request ★ 99ms time ★ 448B↑ 336B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 136B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Torchy Tacos",
+  │   "street_address": "4900 N Lamar Blvd",
+  │   "city": "Austin",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 80B
+  │ {"Error":"The request body is missing at least one of 
+  │ the required attributes"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  380µs     385µs   (cache)      (cache)         (cache)         96ms             1ms        55µs      98ms  
+
+  ✓  400 status code
+  ✓  400 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a business Test 2 points = 2'
+  │ '******* Create a business Tests current points = 4'
+  └
+
+↳ 3. add second business 201 (2 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 145ms time ★ 461B↑ 393B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 149B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's",
+  │   "street_address": "321 South Mopac",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 140B
+  │ {"city":"Austin","id":4906279973683200,"name":"Mandola
+  │ 's","owner_id":6789,"state":"TX","street_address":"321
+  │  South Mopac","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  327µs     304µs   (cache)      (cache)         (cache)         142ms            1ms        79µs      144ms 
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a business Test 3 points = 2'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Create a business Tests Total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 2. Get a business (6 pts)
+↳ 1. get business 200 (4 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/businesses/6232102555090944  
+  200 OK ★ 154ms time ★ 275B↑ 444B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 142B
+  │ {"city":"Austin","id":6232102555090944,"name":"Mandola
+  │ 's","owner_id":6789,"state":"TX","street_address":"490
+  │ 0 N Lamar Blvd","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  433µs     262µs   (cache)      (cache)         (cache)         147ms            5ms        2ms       155ms 
+
+  ✓  200 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Get a business Test 1 points = 4'
+  │ '******* Get a business Tests current points = 4'
+  └
+
+↳ 2. get business with invalid id 404 (2 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/businesses/1  
+  404 Not Found ★ 144ms time ★ 260B↑ 362B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 53B
+  │ {"Error":"No business with this business_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  657µs     442µs   (cache)      (cache)         (cache)         141ms            1ms        521µs     144ms 
+
+  ✓  404 not found
+  ✓  404 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Get a business Test 2 points = 2'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Get a business Tests Total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 3. List all businesses (6 pts)
+↳ 1. get all businesses 200 (6 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  200 OK ★ 156ms time ★ 258B↑ 1.01kB↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 713B
+  │ [{"city":"Austin","id":4906279973683200,"name":"Mandol
+  │ a's","owner_id":6789,"state":"TX","street_address":"32
+  │ 1 South Mopac","zip_code":78751},{"city":"Menifee","id
+  │ ":5638358357245952,"name":"Minnie","owner_id":1234,"st
+  │ ate":"CA","street_address":"33341 N. Main St","zip_cod
+  │ e":92595},{"city":"Menifee","id":5700433016258560,"nam
+  │ e":"Yummy food","owner_id":1234,"state":"CA","street_a
+  │ ddress":"33341 N. Main St","zip_code":92595},{"city":"
+  │ Menifee","id":5750704903815168,"name":"Minnie Hi!","ow
+  │ ner_id":12311114,"state":"NV","street_address":"33341 
+  │ N. Main St","zip_code":95789},{"city":"Austin","id":62
+  │ 32102555090944,"name":"Mandola's","owner_id":6789,"sta
+  │ te":"TX","street_address":"4900 N Lamar Blvd","zip_cod
+  │ e":78751}]
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  384µs     245µs   (cache)      (cache)         (cache)         153ms            1ms        687µs     156ms 
+
+  ✓  200 status code
+  ✓  At least two businesses exists
+  ✓  All business have the required properties
+  ✓  The response content type is application.json
+  ┌
+  │ '******* List all businesses Test 1 points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* List all businesses Tests Total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 4. Edit a business (6 pts)
+↳ 1. edit business 200 (2 pts)
+  PUT https://our-bruin-492606-f6.wl.r.appspot.com/businesses/6232102555090944  
+  200 OK ★ 152ms time ★ 487B↑ 452B↓ size ★ 9↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 159B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's Italian",
+  │   "street_address": "4900 N Lamar Blvd",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 150B
+  │ {"city":"Austin","id":6232102555090944,"name":"Mandola
+  │ 's Italian","owner_id":6789,"state":"TX","street_addre
+  │ ss":"4900 N Lamar Blvd","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  497µs     701µs   (cache)      (cache)         (cache)         148ms            2ms        1ms       152ms 
+
+  ✓  200 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a business Test 1 points = 2'
+  │ '******* Edit a business Tests current points = 2'
+  └
+
+↳ 2. get business after update 200 (2 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/businesses/6232102555090944  
+  200 OK ★ 154ms time ★ 275B↑ 452B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 150B
+  │ {"city":"Austin","id":6232102555090944,"name":"Mandola
+  │ 's Italian","owner_id":6789,"state":"TX","street_addre
+  │ ss":"4900 N Lamar Blvd","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  944µs     265µs   (cache)      (cache)         (cache)         150ms            2ms        861µs     155ms 
+
+  ✓  200 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a business Test 2 points = 2'
+  │ '******* Edit a business Tests current points = 4'
+  └
+
+↳ 3. edit business with missing attributes 400 (1 pt)
+  PUT https://our-bruin-492606-f6.wl.r.appspot.com/businesses/6232102555090944  
+  400 Bad Request ★ 151ms time ★ 463B↑ 336B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 135B
+  │ {
+  │   "owner_id": 123,
+  │   "name": "Torchy Tacos",
+  │   "street_address": "4900 N Lamar Blvd",
+  │   "city": "Austin",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 80B
+  │ {"Error":"The request body is missing at least one of 
+  │ the required attributes"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  1ms       762µs   (cache)      (cache)         (cache)         145ms            3ms        292µs     151ms 
+
+  ✓  400 status code
+  ✓  400 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a business Test 3 points = 1'
+  │ '******* Edit a business Tests current points = 5'
+  └
+
+↳ 4. edit business with invalid id 404 (1 pt)
+  PUT https://our-bruin-492606-f6.wl.r.appspot.com/businesses/1  
+  404 Not Found ★ 153ms time ★ 474B↑ 362B↓ size ★ 9↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 161B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's Italian",
+  │   "street_address": "4900 N Lamar Blvd",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 53B
+  │ {"Error":"No business with this business_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  544µs     416µs   (cache)      (cache)         (cache)         149ms            3ms        2ms       155ms 
+
+  ✓  404 not found
+  ✓  404 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a business Test 4 points = 1'
+  │ '******* Edit a business Tests Total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Edit a business Tests Total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 5. Delete a business (6 pts)
+↳ 1. delete business 204 (2 pts)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/6232102555090944  
+  204 No Content ★ 152ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  432µs     262µs   (cache)      (cache)         (cache)         148ms            1ms        144µs     151ms 
+
+  ✓  204 no content
+  ┌
+  │ '******* Delete a business Test 1 points = 2'
+  │ '******* Delete a business Tests current points = 2'
+  └
+
+↳ 2. delete business just deleted 404 (2 pts)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/6232102555090944  
+  404 Not Found ★ 155ms time ★ 278B↑ 362B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 53B
+  │ {"Error":"No business with this business_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  333µs     229µs   (cache)      (cache)         (cache)         152ms            2ms        981µs     155ms 
+
+  ✓  404 not found
+  ✓  404 error message
+  ┌
+  │ '******* Delete a business Test 2 points = 2'
+  │ '******* Delete a business Tests current points = 4'
+  └
+
+↳ 3. delete second business 204 (2 pts)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/4906279973683200  
+  204 No Content ★ 153ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  441µs     272µs   (cache)      (cache)         (cache)         151ms            1ms        85µs      153ms 
+
+  ✓  204 no content
+  ┌
+  │ '******* Delete a business Test 3 points = 2'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Deletee a business Tests Total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 6. List businesses for owner (6 pts)
+↳ 1. add business for owner 1 201 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 176ms time ★ 463B↑ 395B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 151B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's",
+  │   "street_address": "4900 N Lamar Blvd",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 142B
+  │ {"city":"Austin","id":5639601012080640,"name":"Mandola
+  │ 's","owner_id":6789,"state":"TX","street_address":"490
+  │ 0 N Lamar Blvd","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  548µs     307µs   (cache)      (cache)         (cache)         173ms            1ms        174µs     176ms 
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 2. add 2nd business for owner 1 201 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 105ms time ★ 461B↑ 393B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 149B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's",
+  │   "street_address": "321 South Mopac",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 140B
+  │ {"city":"Austin","id":5634601401712640,"name":"Mandola
+  │ 's","owner_id":6789,"state":"TX","street_address":"321
+  │  South Mopac","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  327µs     228µs   (cache)      (cache)         (cache)         102ms            1ms        71µs      104ms 
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 3. add business for owner 2 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 103ms time ★ 461B↑ 393B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 149B
+  │ {
+  │   "owner_id": 7890,
+  │   "name": "Mandola's",
+  │   "street_address": "321 South Mopac",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 140B
+  │ {"city":"Austin","id":5076651058659328,"name":"Mandola
+  │ 's","owner_id":7890,"state":"TX","street_address":"321
+  │  South Mopac","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  406µs     342µs   (cache)      (cache)         (cache)         100ms            1ms        77µs      102ms 
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 4. get businesses and set count (0 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  200 OK ★ 103ms time ★ 258B↑ 1.16kB↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 853B
+  │ [{"city":"Austin","id":5076651058659328,"name":"Mandol
+  │ a's","owner_id":7890,"state":"TX","street_address":"32
+  │ 1 South Mopac","zip_code":78751},{"city":"Austin","id"
+  │ :5634601401712640,"name":"Mandola's","owner_id":6789,"
+  │ state":"TX","street_address":"321 South Mopac","zip_co
+  │ de":78751},{"city":"Menifee","id":5638358357245952,"na
+  │ me":"Minnie","owner_id":1234,"state":"CA","street_addr
+  │ ess":"33341 N. Main St","zip_code":92595},{"city":"Aus
+  │ tin","id":5639601012080640,"name":"Mandola's","owner_i
+  │ d":6789,"state":"TX","street_address":"4900 N Lamar Bl
+  │ vd","zip_code":78751},{"city":"Menifee","id":570043301
+  │ 6258560,"name":"Yummy food","owner_id":1234,"state":"C
+  │ A","street_address":"33341 N. Main St","zip_code":9259
+  │ 5},{"city":"Menifee","id":5750704903815168,"name":"Min
+  │ nie Hi!","owner_id":12311114,"state":"NV","street_addr
+  │ ess":"33341 N. Main St","zip_code":95789}]
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  421µs     302µs   (cache)      (cache)         (cache)         100ms            1ms        828µs     103ms 
+
+
+↳ 5. get all businesses for owner 1 (6 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/owners/6789/businesses  
+  200 OK ★ 106ms time ★ 270B↑ 586B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 284B
+  │ [{"city":"Austin","id":5634601401712640,"name":"Mandol
+  │ a's","owner_id":6789,"state":"TX","street_address":"32
+  │ 1 South Mopac","zip_code":78751},{"city":"Austin","id"
+  │ :5639601012080640,"name":"Mandola's","owner_id":6789,"
+  │ state":"TX","street_address":"4900 N Lamar Blvd","zip_
+  │ code":78751}]
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  298µs     214µs   (cache)      (cache)         (cache)         103ms            1ms        1ms       106ms 
+
+  ✓  200 status code
+  ✓  Count must equal the value of businesses of this owner set by previous request
+  ✓  Count of total businesses must be at least 1 more than businesses of this owner
+  ✓  The response content type is application.json
+  ┌
+  │ '******* List businesses for owner Test 5 points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* List businesses for owner total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+↳ 6. delete business 204 (0 points)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/5639601012080640  
+  204 No Content ★ 102ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  278µs     208µs   (cache)      (cache)         (cache)         100ms            998µs      51µs      102ms 
+
+  ✓  204 no content
+
+↳ 7. delete 2nd business 204 (0 points)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/5634601401712640  
+  204 No Content ★ 92ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  338µs     247µs   (cache)      (cache)         (cache)         90ms             1ms        63µs      92ms  
+
+  ✓  204 no content
+
+↳ 8. delete 3rd business 204 (0 points)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/5076651058659328  
+  204 No Content ★ 104ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  488µs     349µs   (cache)      (cache)         (cache)         101ms            1ms        46µs      103ms 
+
+  ✓  204 no content
+
+❏ 7. Create a review (8 pts)
+↳ 1. add business  201 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 40ms time ★ 465B↑ 397B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 153B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Torchy Tacos",
+  │   "street_address": "5100 Burnet Road",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78703
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 144B
+  │ {"city":"Austin","id":5139943911325696,"name":"Torchy 
+  │ Tacos","owner_id":6789,"state":"TX","street_address":"
+  │ 5100 Burnet Road","zip_code":78703}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  360µs     250µs   (cache)      (cache)         (cache)         38ms             356µs      30µs      39ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 2. add review 201 (2 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  201 Created ★ 75ms time ★ 421B↑ 366B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 112B
+  │ {
+  │   "user_id": 1234,
+  │   "business_id": 5139943911325696,
+  │   "stars": 4,
+  │   "review_text": "Excellent tacos!"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 113B
+  │ {"business_id":5139943911325696,"id":5146163359514624,
+  │ "review_text":"Excellent tacos!","stars":4,"user_id":1
+  │ 234}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  435µs     217µs   (cache)      (cache)         (cache)         72ms             1ms        102µs     75ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a review Test 2 points = 2'
+  │ '******* Create a review Tests current points = 2'
+  └
+
+↳ 3. add review again 409 (1.5 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  409 Conflict ★ 48ms time ★ 421B↑ 395B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 112B
+  │ {
+  │   "user_id": 1234,
+  │   "business_id": 5139943911325696,
+  │   "stars": 4,
+  │   "review_text": "Excellent tacos!"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 141B
+  │ {"Error":"You have already submitted a review for this
+  │  business. You can update your previous review, or del
+  │ ete it and submit a new review"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  305µs     202µs   (cache)      (cache)         (cache)         46ms             453µs      28µs      47ms  
+
+  ✓  409 status code
+  ✓  409 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a review Test 3 points = 1.5'
+  │ '******* Create a review Tests current points = 3.5'
+  └
+
+↳ 4. add review 400 (1 pt)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  400 Bad Request ★ 21ms time ★ 405B↑ 336B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 97B
+  │ {
+  │   "user_id": 1234,
+  │   "business_id": 5139943911325696,
+  │   "review_text": "Excellent tacos!"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 80B
+  │ {"Error":"The request body is missing at least one of 
+  │ the required attributes"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  302µs     224µs   (cache)      (cache)         (cache)         20ms             367µs      24µs      21ms  
+
+  ✓  400 status code
+  ✓  400 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a review Test 4 points = 1'
+  │ '******* Create a review Tests current points = 4.5'
+  └
+
+↳ 5. add review invalid business 404 (1.5 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  404 Not Found ★ 53ms time ★ 405B↑ 362B↓ size ★ 9↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 97B
+  │ {
+  │   "user_id": 1234,
+  │   "business_id": 1,
+  │   "stars": 4,
+  │   "review_text": "Excellent tacos!"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 53B
+  │ {"Error":"No business with this business_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  295µs     225µs   (cache)      (cache)         (cache)         51ms             566µs      410µs     53ms  
+
+  ✓  404 status code
+  ✓  404 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a review Test 5 points = 1.5'
+  │ '******* Create a review Tests current points = 6'
+  └
+
+↳ 6. add review 2 no review_text 201 (2 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  201 Created ★ 71ms time ★ 382B↑ 332B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 74B
+  │ {
+  │   "user_id": 4567,
+  │   "business_id": 5139943911325696,
+  │   "stars": 3
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 80B
+  │ {"business_id":5139943911325696,"id":5356001234518016,
+  │ "stars":3,"user_id":4567}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  273µs     209µs   (cache)      (cache)         (cache)         69ms             1ms        74µs      71ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Create a review Test 6 points = 2'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Create a review Tests Total points = 8'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 8. Get a review (5 pts)
+↳ 1. get review 200 (3 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5146163359514624  
+  200 OK ★ 41ms time ★ 272B↑ 415B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 113B
+  │ {"business_id":5139943911325696,"id":5146163359514624,
+  │ "review_text":"Excellent tacos!","stars":4,"user_id":1
+  │ 234}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  334µs     244µs   (cache)      (cache)         (cache)         39ms             503µs      426µs     40ms  
+
+  ✓  200 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Get a review Test 1 points = 3'
+  │ '******* Get a review Tests current points = 3'
+  └
+
+↳ 2. get review 404 (1 pt)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/reviews/1  
+  404 Not Found ★ 51ms time ★ 257B↑ 358B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 49B
+  │ {"Error":"No review with this review_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  287µs     218µs   (cache)      (cache)         (cache)         49ms             545µs      743µs     51ms  
+
+  ✓  404 status code
+  ✓  404 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Get a review Test 2 points = 1'
+  │ '******* Get a review Tests current points = 4'
+  └
+
+↳ 3. get second review 200 (1 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5356001234518016  
+  200 OK ★ 31ms time ★ 272B↑ 382B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 80B
+  │ {"business_id":5139943911325696,"id":5356001234518016,
+  │ "stars":3,"user_id":4567}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  311µs     301µs   (cache)      (cache)         (cache)         30ms             452µs      442µs     31ms  
+
+  ✓  200 status code
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Get a review Test 3 points = 1'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Get a review Tests Total points = 5'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 9. Edit a review (6 pts)
+↳ 1. edit review (1 pt)
+  PUT https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5146163359514624  
+  200 OK ★ 77ms time ★ 382B↑ 417B↓ size ★ 9↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 58B
+  │ {
+  │   "stars": 5,
+  │   "review_text": "Queso is the best."
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 115B
+  │ {"business_id":5139943911325696,"id":5146163359514624,
+  │ "review_text":"Queso is the best.","stars":5,"user_id"
+  │ :1234}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  270µs     202µs   (cache)      (cache)         (cache)         74ms             1ms        870µs     77ms  
+
+  ✓  200 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a review Test 1 points = 1'
+  │ '******* Edit a review Tests current points = 1'
+  └
+
+↳ 2. get review after update 200 (1.5 points)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5146163359514624  
+  200 OK ★ 43ms time ★ 272B↑ 417B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 115B
+  │ {"business_id":5139943911325696,"id":5146163359514624,
+  │ "review_text":"Queso is the best.","stars":5,"user_id"
+  │ :1234}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  373µs     274µs   (cache)      (cache)         (cache)         40ms             1ms        447µs     43ms  
+
+  ✓  200 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a review Test 2 points = 1.5'
+  │ '******* Edit a review Tests current points = 2.5'
+  └
+
+↳ 3. edit review with missing attribute 400 (1 pt)
+  PUT https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5146163359514624  
+  400 Bad Request ★ 19ms time ★ 367B↑ 336B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 43B
+  │ {
+  │   "review_text": "Queso is the best."
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 80B
+  │ {"Error":"The request body is missing at least one of 
+  │ the required attributes"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  355µs     280µs   (cache)      (cache)         (cache)         18ms             459µs      28µs      19ms  
+
+  ✓  400 status code
+  ✓  400 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a review Test 3 points = 1'
+  │ '******* Edit a review Tests current points = 3.5'
+  └
+
+↳ 4. edit review with invalid id 404 (1 pt)
+  PUT https://our-bruin-492606-f6.wl.r.appspot.com/reviews/1  
+  404 Not Found ★ 35ms time ★ 369B↑ 358B↓ size ★ 9↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 60B
+  │ {
+  │   "stars": 5,
+  │   "review_text": "Queso is the best."
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 49B
+  │ {"Error":"No review with this review_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  271µs     183µs   (cache)      (cache)         (cache)         33ms             359µs      312µs     35ms  
+
+  ✓  404 not found
+  ✓  404 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a review Test 4 points = 1'
+  │ '******* Edit a review Tests current points = 4.5'
+  └
+
+↳ 5. edit review stars only (1.5 pts)
+  PUT https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5146163359514624  
+  200 OK ★ 61ms time ★ 342B↑ 417B↓ size ★ 9↑ 8↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 18B
+  │ {
+  │   "stars": 4
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 115B
+  │ {"business_id":5139943911325696,"id":5146163359514624,
+  │ "review_text":"Queso is the best.","stars":4,"user_id"
+  │ :1234}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  264µs     213µs   (cache)      (cache)         (cache)         60ms             489µs      455µs     61ms  
+
+  ✓  200 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Edit a review Test 5 points = 1.5'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Edit a review Tests Total points = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 10. Delete a review (5 pts)
+↳ 1. delete review 204 (2 pts)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5146163359514624  
+  204 No Content ★ 69ms time ★ 275B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  279µs     211µs   (cache)      (cache)         (cache)         67ms             1ms        52µs      68ms  
+
+  ✓  204 no content
+  ┌
+  │ '******* Delete a review Test 1 points = 2'
+  │ '******* Delete a review Tests current points = 2'
+  └
+
+↳ 2. delete review just deleted 404 (1 pt)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5146163359514624  
+  404 Not Found ★ 34ms time ★ 275B↑ 358B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 49B
+  │ {"Error":"No review with this review_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  345µs     265µs   (cache)      (cache)         (cache)         32ms             1ms        595µs     34ms  
+
+  ✓  404 not found
+  ✓  404 error message
+  ┌
+  │ '******* Delete a review Test 2 points = 1'
+  │ '******* Delete a review Tests current points = 3'
+  └
+
+↳ 3. delete business 204 (0 pts)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/5139943911325696  
+  204 No Content ★ 88ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  291µs     222µs   (cache)      (cache)         (cache)         86ms             1ms        61µs      88ms  
+
+  ✓  204 no content
+
+↳ 4. get second review business deleted 404 (2 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/reviews/5356001234518016  
+  404 Not Found ★ 33ms time ★ 272B↑ 358B↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 49B
+  │ {"Error":"No review with this review_id exists"}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  362µs     272µs   (cache)      (cache)         (cache)         30ms             1ms        554µs     33ms  
+
+  ✓  404 status code
+  ✓  404 error message
+  ✓  The response content type is application.json
+  ┌
+  │ '******* Delete a review Test 4 points = 2'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '******* Delete a review Tests Total points = 5'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  └
+
+❏ 11. List all reviews for user (6 pts)
+↳ 1. add business 201 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 63ms time ★ 463B↑ 395B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 151B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's",
+  │   "street_address": "4900 N Lamar Blvd",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 142B
+  │ {"city":"Austin","id":5718746756808704,"name":"Mandola
+  │ 's","owner_id":6789,"state":"TX","street_address":"490
+  │ 0 N Lamar Blvd","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  347µs     270µs   (cache)      (cache)         (cache)         60ms             1ms        69µs      62ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 2. add second business 201 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/businesses  
+  201 Created ★ 52ms time ★ 461B↑ 393B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 149B
+  │ {
+  │   "owner_id": 6789,
+  │   "name": "Mandola's",
+  │   "street_address": "321 South Mopac",
+  │   "city": "Austin",
+  │   "state": "TX",
+  │   "zip_code": 78751
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 140B
+  │ {"city":"Austin","id":5704134103662592,"name":"Mandola
+  │ 's","owner_id":6789,"state":"TX","street_address":"321
+  │  South Mopac","zip_code":78751}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  328µs     229µs   (cache)      (cache)         (cache)         50ms             537µs      39µs      51ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 3. add review business 1 user 1 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  201 Created ★ 77ms time ★ 421B↑ 366B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 112B
+  │ {
+  │   "user_id": 1234,
+  │   "business_id": 5718746756808704,
+  │   "stars": 4,
+  │   "review_text": "Excellent tacos!"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 113B
+  │ {"business_id":5718746756808704,"id":6265843818168320,
+  │ "review_text":"Excellent tacos!","stars":4,"user_id":1
+  │ 234}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  320µs     263µs   (cache)      (cache)         (cache)         74ms             1ms        87µs      76ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 4. add review business 2 user 1 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  201 Created ★ 80ms time ★ 421B↑ 366B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 112B
+  │ {
+  │   "user_id": 1234,
+  │   "business_id": 5704134103662592,
+  │   "stars": 4,
+  │   "review_text": "Excellent queso!"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 113B
+  │ {"business_id":5704134103662592,"id":5149887163269120,
+  │ "review_text":"Excellent queso!","stars":4,"user_id":1
+  │ 234}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  315µs     247µs   (cache)      (cache)         (cache)         78ms             483µs      22µs      79ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 5. add review business 2 user 2 (0 pts)
+  POST https://our-bruin-492606-f6.wl.r.appspot.com/reviews  
+  201 Created ★ 70ms time ★ 421B↑ 366B↓ size ★ 9↑ 6↓ headers ★ 0 cookies
+  ┌ ↑ raw ★ 112B
+  │ {
+  │   "user_id": 4567,
+  │   "business_id": 5704134103662592,
+  │   "stars": 4,
+  │   "review_text": "Excellent queso!"
+  │ }
+  └ 
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 113B
+  │ {"business_id":5704134103662592,"id":6230475702009856,
+  │ "review_text":"Excellent queso!","stars":4,"user_id":4
+  │ 567}
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  225µs     168µs   (cache)      (cache)         (cache)         68ms             274µs      22µs      69ms  
+
+  ✓  201 status code
+  ✓  content is valid
+  ✓  The response content type is application.json
+
+↳ 6. get reviews for user 1 (6 pts)
+  GET https://our-bruin-492606-f6.wl.r.appspot.com/users/1234/reviews  
+  200 OK ★ 46ms time ★ 266B↑ 1.32kB↓ size ★ 7↑ 8↓ headers ★ 0 cookies
+  ┌ ↓ application/json ★ text ★ json ★ utf8 ★ 1.02kB
+  │ [{"business_id":5739956077068288,"id":4793051281096704
+  │ ,"review_text":"Excellent queso!","stars":4,"user_id":
+  │ 1234},{"business_id":5643280054222848,"id":51101327110
+  │ 96320,"review_text":"Excellent tacos!","stars":4,"user
+  │ _id":1234},{"business_id":5704134103662592,"id":514988
+  │ 7163269120,"review_text":"Excellent queso!","stars":4,
+  │ "user_id":1234},{"business_id":5118606849343488,"id":5
+  │ 187754950393856,"review_text":"Excellent tacos!","star
+  │ s":4,"user_id":1234},{"business_id":5679095853613056,"
+  │ id":5640825748848640,"review_text":"Excellent queso!",
+  │ "stars":4,"user_id":1234},{"business_id":5681556802764
+  │ 800,"id":5660308458700800,"review_text":"Excellent que
+  │ so!","stars":4,"user_id":1234},{"business_id":50745262
+  │ 57807360,"id":5701666712059904,"review_text":"Excellen
+  │ t tacos!","stars":4,"user_id":1234},{"business_id":571
+  │ 2837116690432,"id":5709113312935936,"review_text":"Exc
+  │ ellent tacos!","stars":4,"user_id":1234},{"business_id
+  │ ":5718746756808704,"id":6265843818168320,"review_text"
+  │ :"Excellent tacos!","stars":4,"user_id":1234}]
+  └
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  230µs     166µs   (cache)      (cache)         (cache)         44ms             438µs      524µs     45ms  
+
+  ✓  200 status code
+  ✓  The response content type is application.json
+  ✓  All reviews are for user_id_1
+  ✓  At least 2 reviews for user_id_1 exist
+  ┌
+  │ '******* List all reviews for user Test 6 points = 6'
+  └
+
+↳ 7. delete business 204 (0 pts)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/5718746756808704  
+  204 No Content ★ 101ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  249µs     179µs   (cache)      (cache)         (cache)         100ms            364µs      25µs      101ms 
+
+  ✓  204 no content
+
+↳ 8. delete second business 204 (0 pts)
+  DELETE https://our-bruin-492606-f6.wl.r.appspot.com/businesses/5704134103662592  
+  204 No Content ★ 112ms time ★ 278B↑ 243B↓ size ★ 7↑ 5↓ headers ★ 0 cookies
+  ↓ text/html ★ text ★ html ★ utf8
+
+  prepare   wait    dns-lookup   tcp-handshake   ssl-handshake   transfer-start   download   process   total 
+  248µs     205µs   (cache)      (cache)         (cache)         110ms            1ms        62µs      111ms 
+
+  ✓  204 no content
+  ┌
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ '1. Create a business (max 6)         = 6'
+  │ '2. Get a business (max 6)            = 6'
+  │ '3. List all businesses (max 6)       = 6'
+  │ '4. Edit a business (max 6)           = 6'
+  │ '5. Delete a business (max 6)         = 6'
+  │ '6. List businesses for owner (max 6) = 6'
+  │ '7. Create a review (max 8)           = 8'
+  │ '8. Get a review (max 5)              = 5'
+  │ '9. Edit a review (max 6)             = 6'
+  │ '10. Delete a review (max 5)          = 5'
+  │ '11. List all review for user (max 6) = 6'
+  │ '+++++++++++++++++++++++++++++++++++++++++'
+  │ 'Total points for the assignment (max 66) = 66'
+  └
+
+┌─────────────────────────┬────────────────────┬────────────────────┐
+│                         │           executed │             failed │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              iterations │                  1 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│                requests │                 47 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│            test-scripts │                 94 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│      prerequest-scripts │                 49 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              assertions │                120 │                  0 │
+├─────────────────────────┴────────────────────┴────────────────────┤
+│ total run duration: 5.5s                                          │
+├───────────────────────────────────────────────────────────────────┤
+│ total data received: 6.38kB (approx)                              │
+├───────────────────────────────────────────────────────────────────┤
+│ average response time: 96ms [min: 19ms, max: 366ms, s.d.: 59ms]   │
+├───────────────────────────────────────────────────────────────────┤
+│ average DNS lookup time: 1ms [min: 1ms, max: 1ms, s.d.: 0µs]      │
+├───────────────────────────────────────────────────────────────────┤
+│ average first byte time: 90ms [min: 18ms, max: 222ms, s.d.: 47ms] │
+└───────────────────────────────────────────────────────────────────┘

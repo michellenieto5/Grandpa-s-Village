@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grandpa's Village</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">Grandpa's Village</div>
+    <nav>
+      <a href="#join">Join</a>
+      <a href="#directory">Directory</a>
+    </nav>
+  </header>
+
+  <div class="photo-strip">
+    <div class="photo-slot">
+      <img src="/images/bakery.jpg" alt="local bakery" />
+      <div class="photo-overlay"><span class="photo-word">it takes</span></div>
+    </div>
+    <div class="photo-slot">
+      <img src="/images/building.jpg" alt="community building" />
+      <div class="photo-overlay"><span class="photo-word">a village</span></div>
+    </div>
+    <div class="photo-slot">
+      <img src="/images/community.jpg" alt="community" />
+      <div class="photo-overlay"><span class="photo-word">to raise</span></div>
+    </div>
+    <div class="photo-slot">
+      <img src="/images/construction.jpg" alt="construction" />
+      <div class="photo-overlay"><span class="photo-word">a child —</span></div>
+    </div>
+    <div class="photo-slot">
+      <img src="/images/fruit.jpg" alt="fruit market" />
+      <div class="photo-overlay"><span class="photo-word">and a</span></div>
+    </div>
+    <div class="photo-slot">
+      <img src="/images/market.jpg" alt="market" />
+      <div class="photo-overlay"><span class="photo-word">business.</span></div>
+    </div>
+  </div>
+
+  <div class="quote-band">
+    <div class="quote-mark">"</div>
+    <div>
+      <div class="quote-text">It takes a village to raise a child.</div>
+      <div class="quote-sub">African proverb — and our founding idea</div>
+    </div>
+  </div>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-left">
+        <span class="eyebrow">Community commerce, built like a village</span>
+        <h1>
+          Support local.<br />
+          <em>Share</em> services.<br />
+          Grow together.
+        </h1>
+        <p>
+          Grandpa's Village brings back the kind of community network that made
+          neighborhoods feel real — a platform where local businesses join a shared
+          directory, get discovered, and grow through the power of community trust.
+        </p>
+        <div class="hero-buttons">
+          <a href="#join" class="btn btn-primary">Join the Village</a>
+          <a href="#directory" class="btn btn-secondary">Explore Directory</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="what-label">What happens inside</div>
+        <div class="feature-item">
+          <div class="feature-num">01</div>
+          <div>
+            <div class="feature-title">Businesses join &amp; become visible</div>
+            <div class="feature-desc">Submit your info and show up in the village directory.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">02</div>
+          <div>
+            <div class="feature-title">Members discover trusted services</div>
+            <div class="feature-desc">Browse and find businesses your neighbors vouch for.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">03</div>
+          <div>
+            <div class="feature-title">Reviews build community trust</div>
+            <div class="feature-desc">Real people, real experiences — that's how the village grows.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">04</div>
+          <div>
+            <div class="feature-title">Events &amp; collaborations coming soon</div>
+            <div class="feature-desc">The village is just getting started.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join" class="form-section">
+      <div class="form-grid">
+        <div class="form-copy">
+          <span class="badge">For business owners</span>
+          <h2>Add your business</h2>
+          <p>Join the village directory and let your community find you.</p>
+        </div>
+        <form id="businessForm">
+          <div class="input-group">
+            <label>Owner ID</label>
+            <input type="number" id="owner_id" required />
+          </div>
+          <div class="input-group">
+            <label>Business Name</label>
+            <input type="text" id="name" required />
+          </div>
+          <div class="input-group">
+            <label>Street Address</label>
+            <input type="text" id="street_address" required />
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label>City</label>
+              <input type="text" id="city" required />
+            </div>
+            <div class="input-group">
+              <label>State</label>
+              <input type="text" id="state" maxlength="2" required />
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Zip Code</label>
+            <input type="number" id="zip_code" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Business</button>
+          <div id="businessMessage" class="message"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="directory">
+      <div class="directory-header">
+        <div>
+          <span class="badge">Business directory</span>
+          <h2>Businesses in the village</h2>
+          <p class="directory-hint">Click on any business to view it and leave a review.</p>
+        </div>
+        <button id="loadBusinessesBtn" class="btn btn-secondary">Refresh</button>
+      </div>
+      <div id="businessGrid" class="business-grid"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">Grandpa's Village</div>
+    <p>Powered by Flask, Google Cloud, JavaScript, and community.</p>
+  </footer>
+
+  <!-- Edit Business Modal -->
+  <div id="editModal" class="modal-backdrop" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Edit Business</h3>
+        <button id="closeEditModal" class="modal-close">✕</button>
+      </div>
+      <form id="editBusinessForm">
+        <input type="hidden" id="edit_business_id" />
+        <div class="input-group">
+          <label>Owner ID</label>
+          <input type="number" id="edit_owner_id" required />
+        </div>
+        <div class="input-group">
+          <label>Business Name</label>
+          <input type="text" id="edit_name" required />
+        </div>
+        <div class="input-group">
+          <label>Street Address</label>
+          <input type="text" id="edit_street_address" required />
+        </div>
+        <div class="form-row">
+          <div class="input-group">
+            <label>City</label>
+            <input type="text" id="edit_city" required />
+          </div>
+          <div class="input-group">
+            <label>State</label>
+            <input type="text" id="edit_state" maxlength="2" required />
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Zip Code</label>
+          <input type="number" id="edit_zip_code" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Changes</button>
+        <div id="editBusinessMessage" class="message"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
